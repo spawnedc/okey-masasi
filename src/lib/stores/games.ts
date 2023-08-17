@@ -9,7 +9,10 @@ const getGames = () => {
   return stored
 }
 
-export const games = writable(getGames())
+export const games = {
+  ...writable(getGames()),
+  getGame: (gameId: string) => getGames().find((g) => g.id === gameId),
+}
 
 games.subscribe((value) => {
   if (browser) {
