@@ -1,5 +1,6 @@
 <script lang="ts">
   import { games } from '$lib/stores/games'
+  import { dateFormatter } from '$lib/formatters'
 </script>
 
 <div class="content">
@@ -7,7 +8,7 @@
   {#if $games.length}
     <ul>
       {#each $games as game}
-        <li><a href={`/games/${game.id}`}>{game.id}</a></li>
+        <li><a href={`/games/${game.id}`}>{dateFormatter.format(game.createdAt)}</a></li>
       {/each}
     </ul>
   {:else}
