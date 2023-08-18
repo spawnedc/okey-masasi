@@ -8,7 +8,7 @@
   {#if $games.length}
     <ul>
       {#each $games as game}
-        <li><a href={`/games/${game.id}`}>{dateFormatter.format(game.createdAt)}</a></li>
+        <li><a href={`/games/${game.id}`}>{dateFormatter.format(new Date(game.createdAt))}</a></li>
       {/each}
     </ul>
   {:else}

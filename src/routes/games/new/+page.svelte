@@ -42,6 +42,7 @@
     {/each}
   </div>
 
+  <div class="label">Colour points</div>
   <div class="columns is-mobile is-multiline">
     {#each colours as colour}
       <div class="column is-half">

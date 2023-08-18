@@ -1,10 +1,9 @@
 import { writable } from 'svelte/store'
-import { browser } from '$app/environment'
 import type { Game } from '../types'
 import { v4 } from 'uuid'
 
 const getGames = () => {
-  const persistedGames = browser ? localStorage.getItem('games') || '[]' : '[]'
+  const persistedGames = localStorage.getItem('games') || '[]'
   const stored: Game[] = JSON.parse(persistedGames)
 
   return stored
@@ -35,24 +34,41 @@ const createNewGame = ({ playerNames, colourPoints }: CreateNewGameProps) => {
   return newGame
 }
 
+const getGame = (gameId: string) => {
+  const game = getGames().find((g) => g.id === gameId)
+  if (!game) {
+    throw new Error(`Game with ID ${gameId} not found`)
+  }
+
+  return game
+}
+
+const updateGame = (game: Game) => {
+  const gamesList = getGames()
+  const gameIndex = gamesList.findIndex((g) => g.id === game.id)
+  if (gameIndex > -1) {
+    gamesList.splice(gameIndex, 1, game)
+    gamesStore.set(gamesList)
+  }
+}
+
 export const games = {
   ...gamesStore,
-  getGame: (gameId: string) => getGames().find((g) => g.id === gameId),
+  getGame,
   createNewGame,
+  updateGame,
 }
 
 games.subscribe((value) => {
-  if (browser) {
-    const sortedGames = [...value].sort((a, b) => {
-      const aCreatedAt = new Date(a.createdAt)
-      const bCreatedAt = new Date(b.createdAt)
+  const sortedGames = [...value].sort((a, b) => {
+    const aCreatedAt = new Date(a.createdAt)
+    const bCreatedAt = new Date(b.createdAt)
 
-      if (aCreatedAt < bCreatedAt) return 1
-      if (aCreatedAt > bCreatedAt) return -1
+    if (aCreatedAt < bCreatedAt) return 1
+    if (aCreatedAt > bCreatedAt) return -1
 
-      return 0
-    })
+    return 0
+  })
 
-    localStorage.setItem('games', JSON.stringify(sortedGames))
-  }
+  localStorage.setItem('games', JSON.stringify(sortedGames))
 })

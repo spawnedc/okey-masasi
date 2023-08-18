@@ -7,16 +7,12 @@ export type Player = {
   name: string
 }
 
-export type RoundScore = {
-  playerId: Player['id']
-  remainingTiles: number
-}
-
 export type Round = {
   id: string
   okeyColour: Colour
-  gosterge?: Player['id']
-  winner: Player['id']
+  gosterge?: number // player index
+  winner: number // player index
+  remainingTiles: [number, number, number, number]
 }
 
 export type Game = {
