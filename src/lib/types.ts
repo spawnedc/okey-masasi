@@ -2,7 +2,7 @@ export enum Colour {
   'BLUE' = 'blue',
   'YELLOW' = 'yellow',
   'RED' = 'red',
-  'BLACK' = 'black'
+  'BLACK' = 'black',
 }
 
 export type Player = {
@@ -24,6 +24,8 @@ export type Round = {
 
 export type Game = {
   id: string
+  createdAt: Date
+  updatedAt: Date
   players: [Player, Player, Player, Player]
   points: Record<Colour, number>
   rounds: Round[]

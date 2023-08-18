@@ -7,6 +7,8 @@
   const handleAddNewGame = () => {
     const newGame: Game = {
       id: v4(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       players: [
         { id: v4(), name: 'player 1' },
         { id: v4(), name: 'player 2' },
