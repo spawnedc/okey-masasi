@@ -1,9 +1,6 @@
-export enum Colour {
-  'BLUE' = 'blue',
-  'YELLOW' = 'yellow',
-  'RED' = 'red',
-  'BLACK' = 'black',
-}
+export const colours = ['blue', 'yellow', 'red', 'black'] as const
+
+export type Colour = (typeof colours)[number]
 
 export type Player = {
   id: string

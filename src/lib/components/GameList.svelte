@@ -1,10 +1,9 @@
 <script lang="ts">
   import { games } from '$lib/stores/games'
-
-  export let onAddNewGame: (() => void) | undefined
 </script>
 
 <div class="content">
+  <a class="button" href="/games/new">Start a new game</a>
   {#if $games.length}
     <ul>
       {#each $games as game}
@@ -14,6 +13,4 @@
   {:else}
     <p>No games found.</p>
   {/if}
-
-  <button class="button" type="button" on:click={onAddNewGame}>Start a new game</button>
 </div>
