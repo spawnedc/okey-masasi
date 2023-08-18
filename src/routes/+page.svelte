@@ -22,10 +22,8 @@
   }
 </script>
 
-<main>
-  <h1>Okey Masasi</h1>
+<main class="container">
+  <h1 class="title">Okey Masasi</h1>
 
-  <div class="card">
-    <GameList onAddNewGame={handleAddNewGame} />
-  </div>
+  <GameList onAddNewGame={handleAddNewGame} />
 </main>
