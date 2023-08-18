@@ -83,6 +83,7 @@
                       type="number"
                       bind:value={remainingTiles[index]}
                       disabled={winnerPlayerIndex === index}
+                      min={winnerPlayerIndex === index ? 0 : 1}
                     />
                   </td>
                   <td>
