@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from '$app/paths'
   import { dateFormatter } from '$lib/formatters'
   import type { Game } from '$lib/types'
 
@@ -11,7 +12,7 @@
   <div class="level is-mobile">
     <div class="level-left">
       <div class="level-item">
-        <a href={`/games/${game.id}`}>{dateFormatter.format(new Date(game.createdAt))}</a>
+        <a href={`${base}/games/${game.id}`}>{dateFormatter.format(new Date(game.createdAt))}</a>
       </div>
     </div>
     <div class="level-right">

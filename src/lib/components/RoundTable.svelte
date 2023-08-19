@@ -60,23 +60,25 @@
       </tr>
     {/each}
   </tbody>
-  <tfoot>
-    <tr>
-      <td>
-        <span class="icon has-text-success">
-          <i class="fas fa-clipboard-list" />
-        </span>
-      </td>
-      {#each totalPoints as point, index}
-        <td class="has-text-centered" colspan="2">
-          {point}
-          {#if winnerIndex === index}
-            <span class="icon has-text-warning">
-              <i class="fas fa-trophy" />
-            </span>
-          {/if}
-        </td>
-      {/each}
-    </tr>
-  </tfoot>
+  {#if rounds.length > 0}
+    <tfoot>
+      <tr>
+        <th class="has-text-centered">
+          <span class="icon has-text-success">
+            <i class="fas fa-clipboard-list" />
+          </span>
+        </th>
+        {#each totalPoints as point, index}
+          <th class="has-text-centered" colspan="2">
+            {point}
+            {#if winnerIndex === index}
+              <span class="icon has-text-warning">
+                <i class="fas fa-trophy" />
+              </span>
+            {/if}
+          </th>
+        {/each}
+      </tr>
+    </tfoot>
+  {/if}
 </table>

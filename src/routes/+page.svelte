@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
+  import { base } from '$app/paths'
   import GameForm from '$lib/components/GameForm.svelte'
   import GameList from '$lib/components/GameList.svelte'
   import Modal from '$lib/components/Modal.svelte'
@@ -12,7 +13,7 @@
 
   const handleNewGameSubmit = (gameParams: CreateNewGameProps) => {
     const newGame = games.createNewGame(gameParams)
-    goto(`/games/${newGame.id}`)
+    goto(`${base}/games/${newGame.id}`)
   }
 
   const handleEditGameSubmit = (gameParams: CreateNewGameProps) => {

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from '$app/paths'
   import { page } from '$app/stores'
   import Modal from '$lib/components/Modal.svelte'
   import RoundForm from '$lib/components/RoundForm.svelte'
@@ -51,7 +52,7 @@
   <p>No such game found</p>
 {:else}
   <h1 class="title">
-    <a class="button is-white" href="/">
+    <a class="button is-white" href={`${base}/`}>
       <span class="icon">
         <i class="fas fa-arrow-left" />
       </span>
