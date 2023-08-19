@@ -20,6 +20,7 @@
       game.rounds.push({ ...round, id: v4() })
       games.updateGame(game)
     }
+    isNewRoundModalOpen = false
   }
 
   const handleEditRoundSubmit = (round: RoundWithoutId) => {
