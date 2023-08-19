@@ -1,5 +1,12 @@
 <script lang="ts">
-  import { colours, type Colour, type Game, type Round, type RoundWithoutId } from '$lib/types'
+  import {
+    colours,
+    type Colour,
+    type Game,
+    type Round,
+    type RoundWithoutId,
+    colourToBulmaMap,
+  } from '$lib/types'
 
   export let onCloseClick: () => void
   export let onSubmit: (round: RoundWithoutId) => void
@@ -34,7 +41,7 @@
     {#each colours as colour}
       <label class="radio">
         <input type="radio" bind:group={okeyColour} value={colour} name="okeyColour" required />
-        <span class="icon" style={`color: ${colour}`}>
+        <span class={`icon  has-text-${colourToBulmaMap[colour].bg}`}>
           <i class="fas fa-square" />
         </span>
       </label>

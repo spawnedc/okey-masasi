@@ -49,7 +49,14 @@
 {#if !game}
   <p>No such game found</p>
 {:else}
-  <h1 class="title">{dateFormatter.format(new Date(game.createdAt))}</h1>
+  <h1 class="title">
+    <a class="button is-white" href="/">
+      <span class="icon">
+        <i class="fas fa-arrow-left" />
+      </span>
+    </a>
+    {dateFormatter.format(new Date(game.createdAt))}
+  </h1>
 
   <button class="button" on:click={() => (isNewRoundModalOpen = true)}>New round</button>
 

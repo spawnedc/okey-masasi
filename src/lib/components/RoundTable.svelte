@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Game, Round } from '$lib/types'
+  import { colourToBulmaMap, type Game, type Round } from '$lib/types'
   import RoundPoint from './RoundPoint.svelte'
 
   export let game: Game
@@ -12,14 +12,9 @@
 <table class="table is-narrow is-fullwidth is-striped is-bordered">
   <thead>
     <tr>
-      <th class="has-text-centered">
+      <th class="has-text-centered pl-0 pr-0">
         <span class="icon">
           <i class="fas fa-hashtag" />
-        </span>
-      </th>
-      <th class="has-text-centered">
-        <span class="icon">
-          <i class="fas fa-palette" />
         </span>
       </th>
       {#each game.players as player}
@@ -30,12 +25,14 @@
   <tbody>
     {#each game.rounds as round, index}
       <tr on:click={() => onRowClick(round)}>
-        <td class="has-text-centered">{index + 1}</td>
-        <td class="has-text-centered">
-          <span class="icon" style={`color: ${round.okeyColour}`}>
-            <i class="fas fa-square" />
-          </span>
+        <td
+          class={`has-text-centered has-background-${
+            colourToBulmaMap[round.okeyColour].bg
+          } has-text-${colourToBulmaMap[round.okeyColour].text}`}
+        >
+          {index + 1}
         </td>
+
         {#each game.players as player, index}
           <td class="has-text-centered">
             <RoundPoint {game} playerIndex={index} {round} />
@@ -53,4 +50,5 @@
       </tr>
     {/each}
   </tbody>
+  <tfoot> <td>? </td></tfoot>
 </table>

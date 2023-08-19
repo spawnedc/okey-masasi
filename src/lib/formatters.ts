@@ -1,7 +1,7 @@
 const locale = navigator.language
 
 export const dateFormatter = new Intl.DateTimeFormat(locale, {
-  weekday: 'long',
+  weekday: 'short',
   year: 'numeric',
   month: 'numeric',
   day: 'numeric',

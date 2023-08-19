@@ -2,6 +2,30 @@ export const colours = ['blue', 'yellow', 'red', 'black'] as const
 
 export type Colour = (typeof colours)[number]
 
+type colourMap = {
+  bg: string
+  text: string
+}
+
+export const colourToBulmaMap: Record<Colour, colourMap> = {
+  black: {
+    bg: 'black',
+    text: 'white',
+  },
+  yellow: {
+    bg: 'warning',
+    text: 'black',
+  },
+  red: {
+    bg: 'danger',
+    text: 'white',
+  },
+  blue: {
+    bg: 'link',
+    text: 'white',
+  },
+}
+
 export type Player = {
   id: string
   name: string

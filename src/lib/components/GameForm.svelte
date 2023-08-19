@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { colours, type CreateNewGameProps, type Game } from '$lib/types'
+  import { colours, colourToBulmaMap, type CreateNewGameProps, type Game } from '$lib/types'
 
   export let game: Game | undefined = undefined
   export let onCancelClick: () => void
@@ -59,7 +59,7 @@
               min="1"
               required
             />
-            <span class="icon is-small is-left" style={`color: ${colour}`}>
+            <span class={`icon is-small is-left has-text-${colourToBulmaMap[colour].bg}`}>
               <i class="fas fa-square" />
             </span>
           </div>
