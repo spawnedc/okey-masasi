@@ -15,7 +15,16 @@
   const point = tilesPoint + gostergePoint
 </script>
 
-{point}
-{#if gostergePoint !== 0}
-  *
-{/if}
+<span class="point">
+  {point}
+
+  {#if gostergePoint !== 0}
+    *
+  {/if}
+</span>
+
+<style>
+  .point {
+    white-space: nowrap;
+  }
+</style>

@@ -5,19 +5,27 @@
   export let game: Game
 </script>
 
-<table class="table is-narrow is-fullwidth is-striped">
+<table class="table is-narrow is-fullwidth is-striped is-bordered">
   <thead>
     <tr>
-      <th class="has-text-centered">No</th>
-      <th class="has-text-centered">Col</th>
+      <th class="has-text-centered">
+        <span class="icon">
+          <i class="fas fa-hashtag" />
+        </span>
+      </th>
+      <th class="has-text-centered">
+        <span class="icon">
+          <i class="fas fa-palette" />
+        </span>
+      </th>
       {#each game.players as player}
-        <th class="has-text-centered">{player.name}</th>
+        <th colspan="2" class="has-text-centered">{player.name}</th>
       {/each}
     </tr>
   </thead>
   <tbody>
     {#each game.rounds as round, index}
-      <tr>
+      <tr on:click={() => console.info(index)}>
         <td class="has-text-centered">{index + 1}</td>
         <td class="has-text-centered">
           <span class="icon" style={`color: ${round.okeyColour}`}>
@@ -25,15 +33,20 @@
           </span>
         </td>
         {#each game.players as player, index}
-          <th class="has-text-centered">
-            {#if round.winner === index}
-              <span class="icon">
+          {#if round.winner === index}
+            <td class="has-text-centered" colspan="2">
+              <span class="icon has-text-success">
                 <i class="fas fa-trophy" />
               </span>
-            {:else}
+            </td>
+          {:else}
+            <td class="has-text-centered">
               <RoundPoint {game} playerIndex={index} {round} />
-            {/if}
-          </th>
+            </td>
+            <td class="has-text-centered">
+              {round.remainingTiles[index]}
+            </td>
+          {/if}
         {/each}
       </tr>
     {/each}

@@ -39,7 +39,13 @@
           <div class="label">Okey colour</div>
           {#each colours as colour}
             <label class="radio">
-              <input type="radio" bind:group={okeyColour} value={colour} required />
+              <input
+                type="radio"
+                bind:group={okeyColour}
+                value={colour}
+                name="okeyColour"
+                required
+              />
               <span class="icon" style={`color: ${colour}`}>
                 <i class="fas fa-square" />
               </span>
@@ -58,6 +64,7 @@
                   <span>Gosterge</span>
                   <button
                     class="button is-text is-small"
+                    type="button"
                     on:click={() => (gostergePlayerIndex = undefined)}
                   >
                     <i class="fas fa-times" />
@@ -72,8 +79,10 @@
                     <input
                       class="radio"
                       type="radio"
+                      name="winnerPlayerIndex"
                       bind:group={winnerPlayerIndex}
                       value={index}
+                      required
                     />
                   </td>
                   <td>{player.name}</td>
@@ -108,6 +117,7 @@
           </div>
         </div>
       </form>
+      <pre>winnerPlayerIndex: {winnerPlayerIndex}</pre>
     </div>
   </div>
   <button class="modal-close is-large" aria-label="close" on:click={onCloseClick} />
