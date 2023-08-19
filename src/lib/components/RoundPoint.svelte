@@ -11,8 +11,12 @@
   }
 
   const tilesPoint = getPointFromRemainingTiles(round.remainingTiles[playerIndex], round.okeyColour)
-  const gostergePoint = round.gosterge === playerIndex ? -100 : 0
-  const point = tilesPoint + gostergePoint
+
+  let gostergePoint: number
+  $: gostergePoint = round.gosterge === playerIndex ? -100 : 0
+
+  let point: number
+  $: point = tilesPoint + gostergePoint
 </script>
 
 <span class="point">

@@ -15,6 +15,8 @@ export type Round = {
   remainingTiles: [number, number, number, number]
 }
 
+export type RoundWithoutId = Omit<Round, 'id'>
+
 export type Game = {
   id: string
   createdAt: Date
