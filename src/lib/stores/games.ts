@@ -11,7 +11,7 @@ const getGames = () => {
 
 const gamesStore = writable(getGames())
 
-const createNewGame = ({ playerNames, colourPoints }: CreateNewGameProps) => {
+const createNewGame = ({ playerNames, colourPoints, gostergePoint }: CreateNewGameProps) => {
   const newGame: Game = {
     id: v4(),
     createdAt: new Date(),
@@ -22,6 +22,7 @@ const createNewGame = ({ playerNames, colourPoints }: CreateNewGameProps) => {
     })) as Game['players'],
     rounds: [],
     points: colourPoints,
+    gostergePoint,
   }
 
   gamesStore.set([...getGames(), newGame])
