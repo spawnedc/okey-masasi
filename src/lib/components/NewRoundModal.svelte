@@ -60,7 +60,7 @@
                     class="button is-text is-small"
                     on:click={() => (gostergePlayerIndex = undefined)}
                   >
-                    <i class="fas fa-x" />
+                    <i class="fas fa-times" />
                   </button>
                 </th>
               </tr>

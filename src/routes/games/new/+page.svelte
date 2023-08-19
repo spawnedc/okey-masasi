@@ -54,6 +54,7 @@
               type="number"
               placeholder={`${colour + 1}'s points`}
               bind:value={colourPoints[colour]}
+              min="1"
               required
             />
             <span class="icon is-small is-left" style={`color: ${colour}`}>

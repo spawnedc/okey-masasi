@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Colour, Game, Round } from '$lib/types'
+  import type { Game } from '$lib/types'
   import RoundPoint from './RoundPoint.svelte'
 
   export let game: Game

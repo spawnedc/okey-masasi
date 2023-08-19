@@ -52,11 +52,21 @@ const updateGame = (game: Game) => {
   }
 }
 
+const deleteGame = (gameId: string) => {
+  const gamesList = getGames()
+  const gameIndex = gamesList.findIndex((g) => g.id === gameId)
+  if (gameIndex > -1) {
+    gamesList.splice(gameIndex, 1)
+    gamesStore.set(gamesList)
+  }
+}
+
 export const games = {
   ...gamesStore,
   getGame,
   createNewGame,
   updateGame,
+  deleteGame,
 }
 
 games.subscribe((value) => {
