@@ -16,9 +16,11 @@
     yellow: 0,
   }
 
+  let gostergePoint: number = 100
+
   const handleFormSubmit = (e: SubmitEvent) => {
     e.preventDefault()
-    onSubmit({ playerNames, colourPoints })
+    onSubmit({ playerNames, colourPoints, gostergePoint })
   }
 </script>
 
@@ -66,6 +68,16 @@
         </div>
       </div>
     {/each}
+  </div>
+
+  <div class="field">
+    <label for={`gostergePoint`} class="label">Gosterge point</label>
+    <div class="control has-icons-left">
+      <input id="gostergePoint" class="input" type="number" bind:value={gostergePoint} required />
+      <span class="icon is-small is-left">
+        <i class="fas fa-user" />
+      </span>
+    </div>
   </div>
 
   <div class="level is-mobile">

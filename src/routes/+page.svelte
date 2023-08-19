@@ -10,8 +10,8 @@
   let isEditGameModalVisible = false
   let gameToEdit: Game | undefined
 
-  const handleNewGameSubmit = ({ colourPoints, playerNames }: CreateNewGameProps) => {
-    const newGame = games.createNewGame({ playerNames, colourPoints })
+  const handleNewGameSubmit = (gameParams: CreateNewGameProps) => {
+    const newGame = games.createNewGame(gameParams)
     goto(`/games/${newGame.id}`)
   }
 
@@ -23,6 +23,7 @@
     })
     if (gameToEdit) {
       gameToEdit.points = gameParams.colourPoints
+      gameToEdit.gostergePoint = gameParams.gostergePoint
       games.updateGame(gameToEdit)
     }
     isEditGameModalVisible = false

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { colourToBulmaMap, type Game, type Round } from '$lib/types'
+  import { getTotalPoints } from '$lib/utils'
   import RoundPoint from './RoundPoint.svelte'
 
   export let game: Game
@@ -7,6 +8,15 @@
 
   let rounds: Round[]
   $: rounds = game.rounds
+
+  let totalPoints: [number, number, number, number]
+  $: totalPoints = getTotalPoints(game)
+
+  let winnerIndex: number
+  $: {
+    const minValue = Math.min(...totalPoints)
+    winnerIndex = totalPoints.indexOf(minValue)
+  }
 </script>
 
 <table class="table is-narrow is-fullwidth is-striped is-bordered">
@@ -50,5 +60,23 @@
       </tr>
     {/each}
   </tbody>
-  <tfoot> <td>? </td></tfoot>
+  <tfoot>
+    <tr>
+      <td>
+        <span class="icon has-text-success">
+          <i class="fas fa-clipboard-list" />
+        </span>
+      </td>
+      {#each totalPoints as point, index}
+        <td class="has-text-centered" colspan="2">
+          {point}
+          {#if winnerIndex === index}
+            <span class="icon has-text-warning">
+              <i class="fas fa-trophy" />
+            </span>
+          {/if}
+        </td>
+      {/each}
+    </tr>
+  </tfoot>
 </table>
