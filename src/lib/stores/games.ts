@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store'
-import type { Game } from '../types'
+import type { CreateNewGameProps, Game } from '../types'
 import { v4 } from 'uuid'
 
 const getGames = () => {
@@ -10,11 +10,6 @@ const getGames = () => {
 }
 
 const gamesStore = writable(getGames())
-
-type CreateNewGameProps = {
-  playerNames: [string, string, string, string]
-  colourPoints: Game['points']
-}
 
 const createNewGame = ({ playerNames, colourPoints }: CreateNewGameProps) => {
   const newGame: Game = {

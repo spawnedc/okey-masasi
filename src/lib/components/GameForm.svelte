@@ -1,10 +1,15 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-  import { games } from '$lib/stores/games'
-  import { colours, type Game } from '$lib/types'
+  import { colours, type CreateNewGameProps, type Game } from '$lib/types'
 
-  let playerNames: [string, string, string, string] = ['', '', '', '']
-  let colourPoints: Game['points'] = {
+  export let game: Game | undefined = undefined
+  export let onCancelClick: () => void
+  export let onSubmit: (newGameParams: CreateNewGameProps) => void
+
+  type PlayerNames = [string, string, string, string]
+
+  let playerNames: PlayerNames =
+    (game?.players.map((p) => p.name) as PlayerNames) || new Array(4).fill('')
+  let colourPoints: Game['points'] = game?.points || {
     black: 0,
     blue: 0,
     red: 0,
@@ -13,12 +18,9 @@
 
   const handleFormSubmit = (e: SubmitEvent) => {
     e.preventDefault()
-    const newGame = games.createNewGame({ playerNames, colourPoints })
-    goto(`/games/${newGame.id}`)
+    onSubmit({ playerNames, colourPoints })
   }
 </script>
-
-<h1 class="title">New game</h1>
 
 <form on:submit={handleFormSubmit}>
   <div class="content">
@@ -66,5 +68,16 @@
     {/each}
   </div>
 
-  <button class="button" type="submit">Add</button>
+  <div class="level is-mobile">
+    <div class="level-right">
+      <div class="level-item">
+        <button class="button is-danger" type="button" on:click={onCancelClick}>Cancel</button>
+      </div>
+    </div>
+    <div class="level-left">
+      <div class="level-item">
+        <button class="button is-primary" type="submit">Save</button>
+      </div>
+    </div>
+  </div>
 </form>

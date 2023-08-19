@@ -23,3 +23,8 @@ export type Game = {
   points: Record<Colour, number>
   rounds: Round[]
 }
+
+export type CreateNewGameProps = {
+  playerNames: [string, string, string, string]
+  colourPoints: Game['points']
+}
