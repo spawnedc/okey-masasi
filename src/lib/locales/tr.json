@@ -1,0 +1,10 @@
+{
+  "app.appTitle": "Okey masası",
+  "app.newGame": "Yeni oyun",
+  "app.save": "Kaydet",
+  "app.cancel": "Vazgeç",
+  "gameForm.playerTitle": "{number}. oyuncu",
+  "gameForm.playerNamePlaceHolder": "{number}. oyuncu ismi",
+  "gameForm.colourPointsLabel": "Renk puanları",
+  "gameForm.indicatorPointLabel": "Gösterge puanı"
+}

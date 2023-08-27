@@ -1,0 +1,10 @@
+{
+  "app.appTitle": "Okey table",
+  "app.newGame": "New game",
+  "app.save": "Save",
+  "app.cancel": "Cancel",
+  "gameForm.playerTitle": "Player {number}",
+  "gameForm.playerNamePlaceHolder": "Player {number}'s name",
+  "gameForm.colourPointsLabel": "Colour points",
+  "gameForm.indicatorPointLabel": "Indicator points"
+}

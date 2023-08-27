@@ -6,6 +6,8 @@
   import Modal from '$lib/components/Modal.svelte'
   import { games } from '$lib/stores/games'
   import type { CreateNewGameProps, Game } from '$lib/types'
+  import { _, defineMessages } from 'svelte-i18n'
+  import { messages } from '$lib/app.messages.svelte'
 
   let isNewGameModalVisible = false
   let isEditGameModalVisible = false
@@ -33,13 +35,13 @@
 </script>
 
 <main class="container">
-  <h1 class="title">Okey Masasi</h1>
+  <h1 class="title">{$_(messages.appTitle)}</h1>
 
   <button type="button" class="button is-info" on:click={() => (isNewGameModalVisible = true)}>
     <span class="icon">
       <i class="fab fa-plus" />
     </span>
-    <span>New game</span>
+    <span>{$_(messages.newGame)}</span>
   </button>
 
   <div class="block" />

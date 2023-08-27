@@ -1,0 +1,10 @@
+{
+  "app.appTitle": "Okey-Tisch",
+  "app.newGame": "Neues Spiel",
+  "app.save": "Speichern",
+  "app.cancel": "Abbrechen",
+  "gameForm.playerTitle": "Spieler {number}",
+  "gameForm.playerNamePlaceHolder": "Der Name von Spieler {number}",
+  "gameForm.colourPointsLabel": "Farbpunkte",
+  "gameForm.indicatorPointLabel": "Indikatorpunkte"
+}
