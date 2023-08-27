@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { _, locale } from 'svelte-i18n'
+  import { _ } from 'svelte-i18n'
   import { goto } from '$app/navigation'
   import { base } from '$app/paths'
   import GameForm from '$lib/components/GameForm.svelte'
@@ -8,12 +8,17 @@
   import { games } from '$lib/stores/games'
   import type { CreateNewGameProps, Game } from '$lib/types'
   import { messages } from '$lib/app.messages.svelte'
-  import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte'
-  import type { Locale } from '$lib/i18n'
+  import AppMenu from '$lib/components/AppMenu.svelte'
 
-  let isNewGameModalVisible = false
-  let isEditGameModalVisible = false
+  let isGameModalVisible = false
   let gameToEdit: Game | undefined
+
+  let isAppMenuOpen = false
+
+  const handleModalClose = () => {
+    isGameModalVisible = false
+    gameToEdit = undefined
+  }
 
   const handleNewGameSubmit = (gameParams: CreateNewGameProps) => {
     const newGame = games.createNewGame(gameParams)
@@ -31,61 +36,54 @@
       gameToEdit.gostergePoint = gameParams.gostergePoint
       games.updateGame(gameToEdit)
     }
-    isEditGameModalVisible = false
-    gameToEdit = undefined
-  }
-
-  const handleLocaleChange = (newLocale: Locale) => {
-    locale.set(newLocale)
+    handleModalClose()
   }
 </script>
 
-<main class="container">
-  <div class="level is-mobile">
-    <div class="level-left">
-      <div class="level-item">
-        <h1 class="title">{$_(messages.appTitle)}</h1>
-      </div>
-    </div>
-    <div class="level-right">
-      <div class="level-item">
-        <LanguageSwitcher onChange={handleLocaleChange} value={$locale} />
-      </div>
+<div class="level is-mobile">
+  <div class="level-left">
+    <div class="level-item">
+      <h1 class="title">{$_(messages.appTitle)}</h1>
     </div>
   </div>
+  <div class="level-right">
+    <div class="level-item">
+      <button class="button" on:click={() => (isAppMenuOpen = true)}>
+        <span class="icon is-small">
+          <i class="fas fa-bars" />
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
 
-  <button type="button" class="button is-info" on:click={() => (isNewGameModalVisible = true)}>
-    <span class="icon">
-      <i class="fab fa-plus" />
-    </span>
-    <span>{$_(messages.newGame)}</span>
-  </button>
+<button type="button" class="button is-info" on:click={() => (isGameModalVisible = true)}>
+  <span class="icon">
+    <i class="fab fa-plus" />
+  </span>
+  <span>{$_(messages.newGame)}</span>
+</button>
 
-  <div class="block" />
+<div class="block" />
 
-  <GameList
-    onEditGameClick={(game) => {
-      gameToEdit = game
-      isEditGameModalVisible = true
-    }}
-  />
+<GameList
+  onEditGameClick={(game) => {
+    gameToEdit = game
+    isGameModalVisible = true
+  }}
+/>
 
-  {#if isNewGameModalVisible}
-    <Modal onCloseClick={() => (isNewGameModalVisible = false)} title={$_(messages.newGame)}>
-      <GameForm
-        onCancelClick={() => (isNewGameModalVisible = false)}
-        onSubmit={handleNewGameSubmit}
-      />
-    </Modal>
-  {/if}
+{#if isGameModalVisible}
+  <Modal
+    onCloseClick={handleModalClose}
+    title={$_(gameToEdit ? messages.editGame : messages.newGame)}
+  >
+    <GameForm
+      game={gameToEdit}
+      onCancelClick={handleModalClose}
+      onSubmit={gameToEdit ? handleEditGameSubmit : handleNewGameSubmit}
+    />
+  </Modal>
+{/if}
 
-  {#if isEditGameModalVisible}
-    <Modal onCloseClick={() => (isEditGameModalVisible = false)} title={$_(messages.editGame)}>
-      <GameForm
-        game={gameToEdit}
-        onCancelClick={() => (isEditGameModalVisible = false)}
-        onSubmit={handleEditGameSubmit}
-      />
-    </Modal>
-  {/if}
-</main>
+<AppMenu isOpen={isAppMenuOpen} onClose={() => (isAppMenuOpen = false)} />
