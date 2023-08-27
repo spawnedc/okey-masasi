@@ -1,0 +1,19 @@
+{
+  "app.appTitle": "Okey-Tisch",
+  "app.newGame": "Neues Spiel",
+  "app.save": "Speichern",
+  "app.cancel": "Abbrechen",
+  "app.noGame": "Kein solches Spiel gefunden",
+  "app.newRound": "Neue Runde",
+  "gameForm.playerTitle": "Spieler {number}",
+  "gameForm.playerNamePlaceHolder": "Der Name von Spieler {number}",
+  "gameForm.colourPointsLabel": "Farbpunkte",
+  "gameForm.indicatorPointLabel": "Indikatorpunkte",
+  "gameList.noGamesFound": "Keine Spiele gefunden",
+  "gameList.deletePrompt": "Möchten Sie dieses Spiel wirklich löschen?",
+  "roundForm.okeyColourLabel": "Okeyfarbe",
+  "roundForm.winnerLabel": "Gewinner",
+  "roundForm.nameLabel": "Name",
+  "roundForm.remainingTilesLabel": "Restliche Fliesen",
+  "roundForm.indicatorLabel": "Indikator"
+}

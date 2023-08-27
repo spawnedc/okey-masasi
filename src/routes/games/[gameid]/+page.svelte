@@ -1,13 +1,15 @@
 <script lang="ts">
+  import { _, date, time } from 'svelte-i18n'
+  import { v4 } from 'uuid'
   import { base } from '$app/paths'
   import { page } from '$app/stores'
+  import { messages } from '$lib/app.messages.svelte'
   import Modal from '$lib/components/Modal.svelte'
   import RoundForm from '$lib/components/RoundForm.svelte'
   import RoundTable from '$lib/components/RoundTable.svelte'
-  import { dateFormatter } from '$lib/formatters'
   import { games } from '$lib/stores/games'
   import type { Game, Round, RoundWithoutId } from '$lib/types'
-  import { v4 } from 'uuid'
+  import { dateTimeOptions } from '$lib/constants'
 
   const { gameid } = $page.params
 
@@ -46,10 +48,16 @@
 
   let isNewRoundModalOpen = false
   let isEditRoundModalOpen = false
+
+  let createdAt: Date | undefined
+  $: createdAt = game ? new Date(game.createdAt) : undefined
+
+  let gameName: string
+  $: gameName = createdAt ? $date(createdAt, dateTimeOptions) : ''
 </script>
 
 {#if !game}
-  <p>No such game found</p>
+  <p>{$_(messages.noGame.id)}</p>
 {:else}
   <h1 class="title">
     <a class="button is-white" href={`${base}/`}>
@@ -57,10 +65,12 @@
         <i class="fas fa-arrow-left" />
       </span>
     </a>
-    {dateFormatter.format(new Date(game.createdAt))}
+    {gameName}
   </h1>
 
-  <button class="button" on:click={() => (isNewRoundModalOpen = true)}>New round</button>
+  <button class="button" on:click={() => (isNewRoundModalOpen = true)}>
+    {$_(messages.newRound.id)}
+  </button>
 
   <div class="block" />
 

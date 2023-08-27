@@ -1,18 +1,23 @@
 <script lang="ts">
+  import { date, time } from 'svelte-i18n'
   import { base } from '$app/paths'
-  import { dateFormatter } from '$lib/formatters'
+  import { dateTimeOptions } from '$lib/constants'
   import type { Game } from '$lib/types'
 
   export let game: Game
   export let onDeleteClick: (gameId: string) => void
   export let onEditClick: (game: Game) => void
+
+  const createdAt = new Date(game.createdAt)
 </script>
 
 <div class="box">
   <div class="level is-mobile">
     <div class="level-left">
       <div class="level-item">
-        <a href={`${base}/games/${game.id}`}>{dateFormatter.format(new Date(game.createdAt))}</a>
+        <a href={`${base}/games/${game.id}`}>
+          {$date(createdAt, dateTimeOptions)}
+        </a>
       </div>
     </div>
     <div class="level-right">

@@ -1,0 +1,19 @@
+{
+  "app.appTitle": "Okey table",
+  "app.newGame": "New game",
+  "app.save": "Save",
+  "app.cancel": "Cancel",
+  "app.noGame": "No such game found",
+  "app.newRound": "New round",
+  "gameForm.playerTitle": "Player {number}",
+  "gameForm.playerNamePlaceHolder": "Player {number}'s name",
+  "gameForm.colourPointsLabel": "Colour points",
+  "gameForm.indicatorPointLabel": "Indicator points",
+  "gameList.noGamesFound": "No games found",
+  "gameList.deletePrompt": "Are you sure you want to delete this game?",
+  "roundForm.okeyColourLabel": "Okey colour",
+  "roundForm.winnerLabel": "Winner",
+  "roundForm.nameLabel": "Name",
+  "roundForm.remainingTilesLabel": "Remaining tiles",
+  "roundForm.indicatorLabel": "Indicator"
+}
