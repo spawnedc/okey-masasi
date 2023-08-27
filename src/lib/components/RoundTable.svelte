@@ -82,3 +82,19 @@
     </tfoot>
   {/if}
 </table>
+
+<style>
+  thead th {
+    border-bottom-width: 3px;
+    border-bottom-color: #000;
+  }
+  tfoot th {
+    border-top-width: 2px;
+    border-top-color: #000;
+  }
+  th[colspan='2'],
+  tbody td:nth-child(2n) {
+    border-left-width: 3px;
+    border-left-color: #000;
+  }
+</style>
