@@ -5,7 +5,7 @@
 <div class="modal is-active">
   <div class="modal-background" on:click={onCloseClick} />
   <div class="modal-content">
-    <div class="box">
+    <div class="box p-2">
       <slot />
     </div>
   </div>

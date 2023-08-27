@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
+  import { messages as appMessages } from '$lib/app.messages.svelte'
   import {
     colours,
     type Colour,
@@ -7,6 +9,7 @@
     type RoundWithoutId,
     colourToBulmaMap,
   } from '$lib/types'
+  import { messages } from './RoundForm.messages.svelte'
 
   export let onCloseClick: () => void
   export let onSubmit: (round: RoundWithoutId) => void
@@ -37,11 +40,11 @@
 
 <form on:submit={handleFormSubmit}>
   <div class="control">
-    <div class="label">Okey colour</div>
+    <div class="label">{$_(messages.okeyColourLabel.id)}</div>
     {#each colours as colour}
       <label class="radio">
         <input type="radio" bind:group={okeyColour} value={colour} name="okeyColour" required />
-        <span class={`icon  has-text-${colourToBulmaMap[colour].bg}`}>
+        <span class={`icon has-text-${colourToBulmaMap[colour].bg}`}>
           <i class="fas fa-square" />
         </span>
       </label>
@@ -52,25 +55,50 @@
     <table class="table is-narrow is-fullwidth is-striped">
       <thead>
         <tr>
-          <th>Winner</th>
-          <th>Name</th>
-          <th>PK?</th>
-          <th>
-            <span>Gosterge</span>
-            <button
-              class="button is-text is-small"
-              type="button"
-              on:click={() => (gosterge = undefined)}
-            >
-              <i class="fas fa-times" />
-            </button>
+          <th title={$_(messages.winnerLabel.id)} class="has-text-centered">
+            <span class="icon has-text-warning">
+              <i class="fas fa-trophy" />
+            </span>
+          </th>
+          <th>{$_(messages.nameLabel.id)}</th>
+          <th title={$_(messages.remainingTilesLabel.id)}>
+            <span class="icon has-text-black">
+              <i class="far fa-clone" />
+            </span>
+          </th>
+          <th
+            title={$_(messages.indicatorLabel.id)}
+            class="has-text-centered"
+            on:click={() => (gosterge = undefined)}
+          >
+            <span class="icon has-text-black">
+              <i class="fas fa-mobile-button" />
+            </span>
+          </th>
+          <th
+            title={$_(messages.indicatorLabel.id)}
+            class="has-text-centered"
+            on:click={() => (gosterge = undefined)}
+          >
+            <span class="icon has-text-black">
+              <i class="fas fa-mobile-button" />
+            </span>
+          </th>
+          <th
+            title={$_(messages.indicatorLabel.id)}
+            class="has-text-centered"
+            on:click={() => (gosterge = undefined)}
+          >
+            <span class="icon has-text-black">
+              <i class="fas fa-mobile-button" />
+            </span>
           </th>
         </tr>
       </thead>
       <tbody>
         {#each game.players as player, index}
           <tr>
-            <td>
+            <td class="has-text-centered">
               <input
                 class="radio"
                 type="radio"
@@ -81,7 +109,7 @@
               />
             </td>
             <td>{player.name}</td>
-            <td>
+            <td width="80">
               <input
                 class="input is-small"
                 type="number"
@@ -90,8 +118,14 @@
                 min={winner === index ? 0 : 1}
               />
             </td>
-            <td>
+            <td class="has-text-centered">
               <input class="radio" type="radio" bind:group={gosterge} value={index} />
+            </td>
+            <td class="has-text-centered">
+              <!-- <input class="radio" type="radio" bind:group={gosterge} value={index} /> -->
+            </td>
+            <td class="has-text-centered">
+              <!-- <input class="radio" type="radio" bind:group={gosterge} value={index} /> -->
             </td>
           </tr>
         {/each}
@@ -100,12 +134,16 @@
     <div class="level is-mobile">
       <div class="level-right">
         <div class="level-item">
-          <button class="button is-danger" type="button" on:click={onCloseClick}>Cancel</button>
+          <button class="button is-danger" type="button" on:click={onCloseClick}>
+            {$_(appMessages.cancel.id)}
+          </button>
         </div>
       </div>
       <div class="level-left">
         <div class="level-item">
-          <button class="button is-primary" type="submit">Save</button>
+          <button class="button is-primary" type="submit">
+            {$_(appMessages.save.id)}
+          </button>
         </div>
       </div>
     </div>

@@ -18,5 +18,13 @@
       id: 'app.cancel',
       default: 'Cancel',
     },
+    noGame: {
+      id: 'app.noGame',
+      default: 'No such game found',
+    },
+    newRound: {
+      id: 'app.newRound',
+      default: 'New round',
+    },
   })
 </script>

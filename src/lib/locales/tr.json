@@ -3,8 +3,17 @@
   "app.newGame": "Yeni oyun",
   "app.save": "Kaydet",
   "app.cancel": "Vazgeç",
+  "app.noGame": "Oyun bulunamadı",
+  "app.newRound": "Yeni raund",
   "gameForm.playerTitle": "{number}. oyuncu",
   "gameForm.playerNamePlaceHolder": "{number}. oyuncu ismi",
   "gameForm.colourPointsLabel": "Renk puanları",
-  "gameForm.indicatorPointLabel": "Gösterge puanı"
+  "gameForm.indicatorPointLabel": "Gösterge puanı",
+  "gameList.noGamesFound": "Oyun bulunamadı",
+  "gameList.deletePrompt": "Bu oyunu silmek istediğinizden emin misiniz?",
+  "roundForm.okeyColourLabel": "Okey rengi",
+  "roundForm.winnerLabel": "Kazanan",
+  "roundForm.nameLabel": "İsim",
+  "roundForm.remainingTilesLabel": "Kalan taşlar",
+  "roundForm.indicatorLabel": "Gösterge"
 }

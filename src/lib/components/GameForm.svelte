@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { colours, colourToBulmaMap, type CreateNewGameProps, type Game } from '$lib/types'
   import { _ } from 'svelte-i18n'
-  import { messages } from './GameForm.messages.svelte'
   import { messages as appMessages } from '$lib/app.messages.svelte'
+  import { colours, colourToBulmaMap, type CreateNewGameProps, type Game } from '$lib/types'
+  import { messages } from './GameForm.messages.svelte'
 
   export let game: Game | undefined = undefined
   export let onCancelClick: () => void
