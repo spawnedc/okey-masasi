@@ -1,7 +1,15 @@
-import { init, getLocaleFromNavigator, register, locale } from 'svelte-i18n'
+import { init, getLocaleFromNavigator, addMessages, locale } from 'svelte-i18n'
+import localeen from '$lib/locales/en.json'
+import localede from '$lib/locales/de.json'
+import localetr from '$lib/locales/tr.json'
 
 export const supportedLanguages = ['en', 'tr', 'de'] as const
 export const fallbackLocale = supportedLanguages[0]
+const localeData = {
+  en: localeen,
+  de: localede,
+  tr: localetr,
+}
 
 const localeFromBrowser = getLocaleFromNavigator()?.split('-')[0]
 const localeFromLocalStorage = localStorage.getItem('language')
@@ -11,7 +19,7 @@ export const initialLocale = localeFromLocalStorage || localeFromBrowser || fall
 export type Locale = (typeof supportedLanguages)[number]
 
 supportedLanguages.forEach((locale) => {
-  register(locale, () => import(`./locales/${locale}.json`))
+  addMessages(locale, localeData[locale])
 })
 
 init({
