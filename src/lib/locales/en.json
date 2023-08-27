@@ -16,7 +16,7 @@
   "gameList.deletePrompt": "Are you sure you want to delete this game?",
   "importer.importLabel": "Import data",
   "importer.importErrorMessage": "Failed to import",
-  "importer.successMessage": "Success!",
+  "importer.successMessage": "Successful!",
   "roundForm.okeyColourLabel": "Okey colour",
   "roundForm.winnerLabel": "Winner",
   "roundForm.nameLabel": "Name",

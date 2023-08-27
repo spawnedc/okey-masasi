@@ -12,7 +12,7 @@
     },
     successMessage: {
       id: 'importer.successMessage',
-      default: 'Success!',
+      default: 'Successful!',
     },
   })
 </script>
