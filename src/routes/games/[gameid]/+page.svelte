@@ -77,7 +77,7 @@
   <RoundTable {game} onRowClick={handleRoundClick} />
 
   {#if isNewRoundModalOpen === true}
-    <Modal onCloseClick={() => (isNewRoundModalOpen = false)}>
+    <Modal onCloseClick={() => (isNewRoundModalOpen = false)} title={$_(messages.newRound.id)}>
       <RoundForm
         {game}
         onCloseClick={() => (isNewRoundModalOpen = false)}
@@ -87,7 +87,7 @@
   {/if}
 
   {#if isEditRoundModalOpen === true}
-    <Modal onCloseClick={() => (isEditRoundModalOpen = false)}>
+    <Modal onCloseClick={() => (isEditRoundModalOpen = false)} title={$_(messages.editRound.id)}>
       <RoundForm
         {game}
         round={roundToEdit}

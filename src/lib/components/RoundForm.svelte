@@ -113,13 +113,20 @@
               <input
                 class="input is-small"
                 type="number"
+                name={`remainingTiles[${index}]`}
                 bind:value={remainingTiles[index]}
-                disabled={winner === index}
+                readonly={winner === index}
                 min={winner === index ? 0 : 1}
               />
             </td>
             <td class="has-text-centered">
-              <input class="radio" type="radio" bind:group={gosterge} value={index} />
+              <input
+                class="radio"
+                type="radio"
+                name="gosterge"
+                bind:group={gosterge}
+                value={index}
+              />
             </td>
             <td class="has-text-centered">
               <!-- <input class="radio" type="radio" bind:group={gosterge} value={index} /> -->
@@ -131,20 +138,21 @@
         {/each}
       </tbody>
     </table>
-    <div class="level is-mobile">
-      <div class="level-right">
-        <div class="level-item">
-          <button class="button is-danger" type="button" on:click={onCloseClick}>
-            {$_(appMessages.cancel.id)}
-          </button>
-        </div>
+  </div>
+  <div class="block" />
+  <div class="level is-mobile">
+    <div class="level-right">
+      <div class="level-item">
+        <button class="button is-danger" type="button" on:click={onCloseClick}>
+          {$_(appMessages.cancel.id)}
+        </button>
       </div>
-      <div class="level-left">
-        <div class="level-item">
-          <button class="button is-primary" type="submit">
-            {$_(appMessages.save.id)}
-          </button>
-        </div>
+    </div>
+    <div class="level-left">
+      <div class="level-item">
+        <button class="button is-primary" type="submit">
+          {$_(appMessages.save.id)}
+        </button>
       </div>
     </div>
   </div>

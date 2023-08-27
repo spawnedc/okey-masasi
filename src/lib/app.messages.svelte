@@ -10,6 +10,10 @@
       id: 'app.newGame',
       default: 'New game',
     },
+    editGame: {
+      id: 'app.editGame',
+      default: 'Edit game',
+    },
     save: {
       id: 'app.save',
       default: 'Save',
@@ -25,6 +29,10 @@
     newRound: {
       id: 'app.newRound',
       default: 'New round',
+    },
+    editRound: {
+      id: 'app.editRound',
+      default: 'Edit round',
     },
   })
 </script>
