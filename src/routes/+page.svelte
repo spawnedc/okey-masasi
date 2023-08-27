@@ -71,7 +71,7 @@
   />
 
   {#if isNewGameModalVisible}
-    <Modal onCloseClick={() => (isNewGameModalVisible = false)}>
+    <Modal onCloseClick={() => (isNewGameModalVisible = false)} title={$_(messages.newGame)}>
       <GameForm
         onCancelClick={() => (isNewGameModalVisible = false)}
         onSubmit={handleNewGameSubmit}
@@ -80,7 +80,7 @@
   {/if}
 
   {#if isEditGameModalVisible}
-    <Modal onCloseClick={() => (isEditGameModalVisible = false)}>
+    <Modal onCloseClick={() => (isEditGameModalVisible = false)} title={$_(messages.editGame)}>
       <GameForm
         game={gameToEdit}
         onCancelClick={() => (isEditGameModalVisible = false)}

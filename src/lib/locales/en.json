@@ -1,10 +1,12 @@
 {
   "app.appTitle": "Okey table",
   "app.newGame": "New game",
+  "app.editGame": "Edit game",
   "app.save": "Save",
   "app.cancel": "Cancel",
   "app.noGame": "No such game found",
   "app.newRound": "New round",
+  "app.editRound": "Edit round",
   "gameForm.playerTitle": "Player {number}",
   "gameForm.playerNamePlaceHolder": "Player {number}'s name",
   "gameForm.colourPointsLabel": "Colour points",
