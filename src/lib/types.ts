@@ -35,6 +35,7 @@ export type Round = {
   id: string
   okeyColour: Colour
   gosterge?: number // player index
+  wonByOkey?: boolean
   winner: number // player index
   remainingTiles: [number, number, number, number]
 }

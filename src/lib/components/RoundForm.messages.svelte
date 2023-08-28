@@ -22,5 +22,9 @@
       id: 'roundForm.indicatorLabel',
       default: 'Indicator',
     },
+    wonByOkeyLabel: {
+      id: 'roundForm.wonByOkeyLabel',
+      default: 'Won by discarding Okey?',
+    },
   })
 </script>

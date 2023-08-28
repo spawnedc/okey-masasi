@@ -20,6 +20,7 @@
   let gosterge: number | undefined = round?.gosterge
   let winner: number | undefined = round?.winner
   let okeyColour: Colour | undefined = round?.okeyColour
+  let wonByOkey: boolean = round?.wonByOkey || false
 
   $: if (winner !== undefined) {
     remainingTiles[winner] = 0
@@ -33,6 +34,7 @@
         remainingTiles,
         winner,
         gosterge,
+        wonByOkey,
       })
     }
   }
@@ -42,14 +44,24 @@
   <div class="control">
     <div class="label">{$_(messages.okeyColourLabel.id)}</div>
     {#each colours as colour}
-      <label class="radio">
+      <label class="radio pr-4">
         <input type="radio" bind:group={okeyColour} value={colour} name="okeyColour" required />
         <span class={`icon has-text-${colourToBulmaMap[colour].bg}`}>
           <i class="fas fa-square" />
         </span>
+        <span>({game.points[colour]})</span>
       </label>
     {/each}
   </div>
+
+  <div class="block" />
+  <div class="control">
+    <label class="checkbox">
+      <input type="checkbox" name="wonByOkey" bind:checked={wonByOkey} />
+      <span>{$_(messages.wonByOkeyLabel)}</span>
+    </label>
+  </div>
+
   <div class="block" />
   <div class="control">
     <table class="table is-narrow is-fullwidth is-striped">
