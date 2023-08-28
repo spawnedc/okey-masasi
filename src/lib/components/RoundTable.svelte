@@ -45,7 +45,7 @@
 
         {#each game.players as player, index}
           <td class="has-text-centered">
-            <RoundPoint {game} playerIndex={index} {round} />
+            <RoundPoint {game} {round} playerIndex={index} />
           </td>
           <td class="has-text-centered" class:has-background-success={round.winner === index}>
             {#if round.winner === index}
