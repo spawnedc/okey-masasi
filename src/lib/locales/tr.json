@@ -21,5 +21,6 @@
   "roundForm.winnerLabel": "Kazanan",
   "roundForm.nameLabel": "İsim",
   "roundForm.remainingTilesLabel": "Kalan taşlar",
-  "roundForm.indicatorLabel": "Gösterge"
+  "roundForm.indicatorLabel": "Gösterge",
+  "roundForm.wonByOkeyLabel": "Okeyle bitti"
 }

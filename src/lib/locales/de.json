@@ -21,5 +21,6 @@
   "roundForm.winnerLabel": "Gewinner",
   "roundForm.nameLabel": "Name",
   "roundForm.remainingTilesLabel": "Restliche Fliesen",
-  "roundForm.indicatorLabel": "Indikator"
+  "roundForm.indicatorLabel": "Indikator",
+  "roundForm.wonByOkeyLabel": "Okeyle bitti"
 }

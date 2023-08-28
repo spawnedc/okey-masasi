@@ -21,5 +21,6 @@
   "roundForm.winnerLabel": "Winner",
   "roundForm.nameLabel": "Name",
   "roundForm.remainingTilesLabel": "Remaining tiles",
-  "roundForm.indicatorLabel": "Indicator"
+  "roundForm.indicatorLabel": "Indicator",
+  "roundForm.wonByOkeyLabel": "Won by discarding Okey?"
 }
