@@ -14,7 +14,7 @@
   }
 </script>
 
-<div class="app-menu is-overlay is-flex is-flex-direction-column" class:open={isOpen}>
+<div class="app-menu" class:open={isOpen}>
   <div class="card is-flex-grow-1">
     <header class="card-header">
       <p class="card-header-title">{$_(appMessages.appTitle)}</p>
@@ -40,8 +40,15 @@
 
 <style>
   .app-menu {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     transition: 0.3s transform ease-in-out;
     transform: translateX(100%);
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
     z-index: 99;
   }
 
